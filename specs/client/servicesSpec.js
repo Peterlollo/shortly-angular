@@ -40,6 +40,7 @@ describe('Services', function () {
       $httpBackend.expect('GET', '/api/links').respond(mockResponse);
 
       Links.getAll().then(function (links) {
+       // console.log('this is what our getall wants: ', links)
         expect(links).to.deep.equal(mockResponse);
       });
 
@@ -57,6 +58,7 @@ describe('Services', function () {
         });
 
       Links.addOne(github).then(function (resp) {
+        console.log('response from addone is :', resp)
         expect(resp.status).to.equal(201);
         expect(resp.data.title).to.equal('Hack Reactor Labs');
       });
