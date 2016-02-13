@@ -19,10 +19,10 @@
     <input type="text" class="search" ng-model="searchString" placeholder="Enter your search terms" ng-keydown="searchFor(searchString)" />
     </div>
 
-    <ul class="data-ctrl">
+    <ul class="link">
         <li ng-repeat="link in realResults track by $index">
-            <img src='../../assets/redirect_icon.png'/>
-            <div class='info'>
+          <div class='info'>
+            <a href='{{link.base_url}}/{{link.code}}'><img class="box rotate" src='../../assets/redirect_icon.png' /></a>
             <div class='visits'><span class='count'>{{ link.visits }}</span> Visits </div>
             <div class='title'>{{ link.title }}</div>
             <div class='original'>{{ link.url }}</div>
