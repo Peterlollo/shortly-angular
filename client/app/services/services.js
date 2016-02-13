@@ -25,9 +25,8 @@ angular.module('shortly.services', [])
     }).then(function(res){
       res.status = 201;
       return res;
-
     });
- };
+  };
 
   return {
     getAll: getAll,

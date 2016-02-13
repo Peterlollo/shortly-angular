@@ -20,22 +20,16 @@
     </div>
 
     <ul class="data-ctrl">
-        <li ng-repeat="link in realResults">
-            <p> {{ link.title }} </p>
+        <li ng-repeat="link in realResults track by link.visits">
+            <img src='../../assets/redirect_icon.png'/>
+            <div class='info'>
+            <div class='visits'><span class='count'>{{ link.visits }}</span> Visits </div>
+            <div class='title'>{{ link.title }}</div>
+            <div class='original'>{{ link.url }}</div>
+            <a href='{{link.base_url}}/{{link.code}}'> {{ link.base_url }}/{{ link.code }}</a>
+          </div>
         </li>
     </ul>
-
-
-<!-- 
-    <li ng-repeat="link in data.links track by $index">
-    <img src='../../assets/redirect_icon.png'/>
-      <div class='info'>
-      <div class='visits'><span class='count'>{{ link.__v }}</span> Visits </div>
-      <div class='title'>{{ link.title }}</div>
-      <div class='original'>{{ link.url }}</div>
-      <a href='{{link.base_url}}/{{link.code}}' ng-click="addCount($index)"> {{ link.base_url }}/{{ link.code }}</a>
-    </div>
-    </li> -->
 
 
 </div>
