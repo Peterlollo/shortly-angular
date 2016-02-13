@@ -8,6 +8,9 @@ angular.module('shortly.shorten', [])
   Links.addOne($scope.link)
   .then(function () {
     $scope.link.url = '';
+  }).catch(function(error){
+    console.error('Error: Invalid address');
+     $scope.link.url = '';
   });
 };
 

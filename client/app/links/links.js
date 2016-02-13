@@ -16,7 +16,10 @@ angular.module('shortly.links', [])
     Links.getAll(function(res){
       results = res;
       results.forEach(function(link) {
-        if(link.url.toLowerCase().indexOf($scope.searchString) !== -1) {
+        if(!$scope.searchString) {
+          $scope.realResults.push(link);
+          $scope.realResults.sort(function(a,b){ return b.visits - a.visits;});
+        } else if(link.url.toLowerCase().indexOf($scope.searchString) !== -1) {
           $scope.realResults.push(link);
           $scope.realResults.sort(function(a,b){ return b.visits - a.visits;});
         }
@@ -31,6 +34,7 @@ angular.module('shortly.links', [])
         $scope.data.links = res;
         return res;
       });
+      $scope.searchFor();
     } else {
       $location.path('/signin');
     }
