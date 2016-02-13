@@ -7,16 +7,6 @@ angular.module('shortly.links', [])
   $scope.links = function() {
     Links.getAll();
   };
-  
-  $scope.sortBy = function(collection, iterator) {
-    if (typeof iterator === 'string') {
-      return collection.sort(function(a, b) {
-        return a[iterator] > b[iterator];
-      });
-    } else {
-      return collection.sort(iterator).sort();
-    }
-};
 
   $scope.realResults = [];
 
@@ -28,7 +18,7 @@ angular.module('shortly.links', [])
       results.forEach(function(link) {
         if(link.url.toLowerCase().indexOf($scope.searchString) !== -1) {
           $scope.realResults.push(link);
-
+          $scope.realResults.sort(function(a,b){ return b.visits - a.visits;});
         }
       });
     });
@@ -49,12 +39,3 @@ angular.module('shortly.links', [])
   $scope.init();
 });
 
-var sortBy = function(collection, iterator) {
-    if (typeof iterator === 'string') {
-      return collection.sort(function(a, b) {
-        return a[iterator] > b[iterator];
-      });
-    } else {
-      return collection.sort(iterator).sort();
-    }
-};
