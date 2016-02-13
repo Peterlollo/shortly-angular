@@ -7,11 +7,11 @@ angular.module('shortly.services', [])
       method: 'GET',
       url: '/api/links'
     }).then(function(res){
+      console.log('this is the res from get: ', res);
       if (cb) { return cb(res.data); }
         else {
           return res.data;
         }
-
     }).catch(function(error) {
       console.log('MAJOR ERROR!');
     });

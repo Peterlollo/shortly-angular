@@ -1,5 +1,6 @@
 var linksController = require('../links/linkController.js');
 var userController = require('../users/userController.js');
+
 var helpers = require('./helpers.js'); // our custom middleware
 
 module.exports = function (app, express) {
@@ -13,6 +14,9 @@ module.exports = function (app, express) {
   // app.use('/api/links', helpers.decode);
   app.get('/api/links/', linksController.allLinks);
   app.post('/api/links/', linksController.newLink);
+
+  //app.get('/api/links/', ShortenController.allLinks);
+  //app.post('/app/shorten/', shortenController.addLink);
 
   // If a request is sent somewhere other than the routes above,
   // send it through our custom error handler
