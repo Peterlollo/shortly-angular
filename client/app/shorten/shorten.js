@@ -15,4 +15,11 @@ angular.module('shortly.shorten', [])
     Auth.signout();
   };
 
+  $scope.init = function() {
+    if(!Auth.isAuth()) {
+      $location.path('/signin');
+    }
+  };
+
+  $scope.init();
 });

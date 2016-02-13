@@ -7,7 +7,7 @@
       <ul>
         <li><a href='#/links'>All Links</a></li>
         <li><a href='#/shorten'>Shorten</a></li>
-        <li><a href='#/signin' class='logout' ng-click="destroytoken">Logout</a></li>
+        <li><a href='#/signin' class='logout' ng-click="destroytoken()">Logout</a></li>
       </ul>
     </div>
   <ul>
@@ -20,7 +20,7 @@
     </div>
 
     <ul class="data-ctrl">
-        <li ng-repeat="link in realResults track by link.visits">
+        <li ng-repeat="link in realResults track by $index">
             <img src='../../assets/redirect_icon.png'/>
             <div class='info'>
             <div class='visits'><span class='count'>{{ link.visits }}</span> Visits </div>

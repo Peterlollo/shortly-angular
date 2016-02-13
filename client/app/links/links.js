@@ -1,6 +1,6 @@
 angular.module('shortly.links', [])
 
-.controller('LinksController', function ($scope, Links, Auth) {
+.controller('LinksController', function ($scope, $location, Links, Auth) {
   
   $scope.data = {};
 
@@ -26,10 +26,14 @@ angular.module('shortly.links', [])
   };
 
   $scope.init = function () {
-    Links.getAll(function(res){
-      $scope.data.links = res;
-      return res;
-    });
+    if(Auth.isAuth()) {
+      Links.getAll(function(res){
+        $scope.data.links = res;
+        return res;
+      });
+    } else {
+      $location.path('/signin');
+    }
   };
 
   $scope.destroytoken = function () {
