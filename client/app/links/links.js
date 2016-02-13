@@ -1,6 +1,6 @@
 angular.module('shortly.links', [])
 
-.controller('LinksController', function ($scope, $location, Links, Auth) {
+.controller('LinksController', function ($scope, $location, Links, Auth, allLinks) {
   
   $scope.data = {};
 
@@ -30,10 +30,7 @@ angular.module('shortly.links', [])
 
   $scope.init = function () {
     if(Auth.isAuth()) {
-      Links.getAll(function(res){
-        $scope.data.links = res;
-        return res;
-      });
+      $scope.data.links = allLinks;
       $scope.searchFor();
     } else {
       $location.path('/signin');

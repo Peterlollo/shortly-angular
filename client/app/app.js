@@ -5,7 +5,7 @@ angular.module('shortly', [
   'shortly.auth',
   'ngRoute'
 ])
-.config(function ($routeProvider, $httpProvider ) {
+.config(function ($routeProvider, $httpProvider) {
 
   $routeProvider
     .when('/signin', {
@@ -18,7 +18,12 @@ angular.module('shortly', [
     })
     .when('/links', {
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      resolve: {
+        allLinks: function(Links) {
+          return Links.getAll();
+        }
+      }
     })
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
