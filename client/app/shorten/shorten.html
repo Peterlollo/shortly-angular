@@ -5,9 +5,15 @@
   <ul>
       <li><a href='#/links'>All Links</a></li>
       <li><a href='#/shorten'>Shorten</a></li>
+      <li><a href='#/signin' class='logout' ng-click="destroytoken">Logout</a></li>
     </ul>
-      <a href='/logout' class='logout'>Logout</a>
   </div>
+
+  <form name="shortenform" ng-submit='addLink()'>
+      <input class='text' type='text' name='url' ng-model='link.url'>
+      <input type='submit' value='Shorten'>
+  </form>
+
 </div>
 
 

@@ -1,17 +1,41 @@
 <div id='container'>
   <!-- Your html here -->
-  <h1> hello </h1>
-  <ul>
-  <li ng-repeat="link in links track by $index">
-    {{ link }}
-  </li>
-  </ul>
+  <h1> The weakest links </h1>
+
 
   <div class = 'navigation'>
       <ul>
         <li><a href='#/links'>All Links</a></li>
         <li><a href='#/shorten'>Shorten</a></li>
+        <li><a href='#/signin' class='logout' ng-click="destroytoken">Logout</a></li>
       </ul>
-      <a href='/logout' class='logout'>Logout</a>
     </div>
+  <ul>
+
+ 
+    <h3 class="headName">Search your links</h3>
+
+    <div class="bar">
+    <input type="text" class="search" ng-model="searchString" placeholder="Enter your search terms" ng-keydown="searchFor(searchString)" />
+    </div>
+
+    <ul class="data-ctrl">
+        <li ng-repeat="link in realResults">
+            <p> {{ link.title }} </p>
+        </li>
+    </ul>
+
+
+<!-- 
+    <li ng-repeat="link in data.links track by $index">
+    <img src='../../assets/redirect_icon.png'/>
+      <div class='info'>
+      <div class='visits'><span class='count'>{{ link.__v }}</span> Visits </div>
+      <div class='title'>{{ link.title }}</div>
+      <div class='original'>{{ link.url }}</div>
+      <a href='{{link.base_url}}/{{link.code}}' ng-click="addCount($index)"> {{ link.base_url }}/{{ link.code }}</a>
+    </div>
+    </li> -->
+
+
 </div>

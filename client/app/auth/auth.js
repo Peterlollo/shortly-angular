@@ -6,6 +6,7 @@ angular.module('shortly.auth', [])
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
 
+
   $scope.signin = function () {
     Auth.signin($scope.user)
       .then(function (token) {
@@ -14,6 +15,8 @@ angular.module('shortly.auth', [])
       })
       .catch(function (error) {
         console.error(error);
+        $scope.user.password = '';
+        $scope.user.username = '';
       });
   };
 
@@ -25,6 +28,8 @@ angular.module('shortly.auth', [])
       })
       .catch(function (error) {
         console.error(error);
+        $scope.user.password = '';
+        $scope.user.username = '';
       });
   };
 });
